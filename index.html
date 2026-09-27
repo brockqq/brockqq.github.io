@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brock｜資深後端工程師・平台工程｜台中</title>
+
+<link rel="canonical" href="https://brockqq.github.io/">
+<meta name="author" content="Brock">
+<meta name="description" content="Brock，十年以上 Java 後端與系統架構經驗。專注於系統現代化、微服務與平台工程、跨系統整合與對帳設計。現居台中。">
+<meta name="keywords" content="Brock, Java, Spring Boot, 微服務, DDD, 平台工程, Legacy Modernization, Event Sourcing, AS400, IBM MQ, Vue 3, 後端工程師, 台中">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="Brock">
+<meta property="og:title" content="Brock｜資深後端工程師・平台工程">
+<meta property="og:description" content="讓還在運轉的系統，可以安全地改變。十年以上 Java 後端、系統現代化與平台工程經驗。">
+<meta property="og:url" content="https://brockqq.github.io/">
+<!-- 有 1200x630 的分享圖再打開這兩行 -->
+<!-- <meta property="og:image" content="https://brockqq.github.io/og-image.png"> -->
+<!-- <meta name="twitter:image" content="https://brockqq.github.io/og-image.png"> -->
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+
+<style>
+:root{
+  --ink:#14273B;
+  --ink-soft:#3D5165;
+  --muted:#6B7783;
+  --paper:#FBFAF6;
+  --rule:#D8DBD5;
+  --mark:#8A6A3B;
+  --band:#14273B;
+  --band-text:#E9E6DD;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti TC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ink:#E9E6DD;
+    --ink-soft:#C3C7C9;
+    --muted:#8E989F;
+    --paper:#111C27;
+    --rule:#2A3947;
+    --mark:#C9A56A;
+    --band:#0B141D;
+    --band-text:#E9E6DD;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:17px; line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit; text-decoration-color:var(--mark); text-underline-offset:4px}
+a:hover{color:var(--mark)}
+:focus-visible{outline:2px solid var(--mark); outline-offset:3px; border-radius:2px}
+
+.wrap{max-width:1040px; margin:0 auto; padding:0 28px}
+.read{max-width:680px}
+
+/* nav */
+nav{
+  position:sticky; top:0; z-index:5;
+  background:color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--rule);
+}
+nav .wrap{display:flex; justify-content:space-between; align-items:center; height:58px}
+nav .me{font-weight:700; text-decoration:none; font-size:16px}
+nav ul{list-style:none; display:flex; gap:26px; font-size:15px}
+nav ul a{text-decoration:none; color:var(--ink-soft)}
+nav ul a:hover{color:var(--mark)}
+@media (max-width:640px){ nav ul{gap:16px; font-size:14px} nav ul li.hide-s{display:none} }
+
+/* hero */
+.hero{padding:96px 0 72px}
+.hero h1{font-size:clamp(44px,7vw,76px); line-height:1.08; font-weight:700; letter-spacing:-.01em}
+.hero .en{display:block; font-family:var(--serif); font-weight:400; font-size:.46em; color:var(--muted); margin-top:10px; letter-spacing:0}
+.thesis{font-size:clamp(22px,2.6vw,28px); line-height:1.6; margin-top:40px; max-width:22em; font-weight:600}
+.hero .intro{color:var(--ink-soft); margin-top:18px; max-width:36em}
+.links{display:flex; flex-wrap:wrap; gap:22px; margin-top:30px; font-size:16px}
+
+/* the career line: the one memorable element */
+.line{margin-top:72px; position:relative}
+.line ol{list-style:none; display:grid; grid-template-columns:repeat(4,1fr); position:relative}
+.line ol::before{
+  content:""; position:absolute; left:0; right:0; top:7px; height:2px;
+  background:linear-gradient(to right, var(--rule) 0 75%, var(--mark) 75% 100%);
+}
+.line li{position:relative; padding-top:30px; padding-right:18px}
+.line li::before{
+  content:""; position:absolute; top:0; left:0; width:16px; height:16px; border-radius:50%;
+  background:var(--paper); border:2px solid var(--rule);
+}
+.line li:last-child::before{border-color:var(--mark); background:var(--mark)}
+.line .yr{font-family:var(--serif); color:var(--mark); font-size:15px}
+.line .co{font-size:14px; color:var(--muted); margin-top:2px}
+.line .did{font-weight:650; font-size:17px; line-height:1.45; margin-top:8px}
+@media (max-width:760px){
+  .line ol{grid-template-columns:1fr; gap:6px}
+  .line ol::before{left:7px; right:auto; top:0; bottom:0; width:2px; height:auto;
+    background:linear-gradient(to bottom, var(--rule) 0 75%, var(--mark) 75% 100%)}
+  .line li{padding:0 0 22px 36px}
+}
+
+/* sections */
+section{padding:84px 0; border-top:1px solid var(--rule)}
+h2{font-size:30px; line-height:1.3; margin-bottom:12px}
+.lead{color:var(--muted); margin-bottom:44px; max-width:40em}
+p + p{margin-top:16px}
+
+/* ledger rows: year column + body */
+.row{display:grid; grid-template-columns:150px 1fr; gap:28px; padding:34px 0; border-top:1px solid var(--rule)}
+.row:first-of-type{border-top:none; padding-top:0}
+.row .when{font-family:var(--serif); color:var(--mark); font-size:15px; line-height:1.6}
+.row .when small{display:block; font-family:var(--sans); color:var(--muted); font-size:14px; margin-top:4px}
+.row h3{font-size:21px; line-height:1.4; margin-bottom:6px}
+.row .role{color:var(--muted); font-size:15px; margin-bottom:12px}
+.row ul{list-style:none}
+.row li{padding-left:18px; position:relative; margin-top:8px; color:var(--ink-soft)}
+.row li::before{content:""; position:absolute; left:0; top:.85em; width:8px; height:1px; background:var(--mark)}
+@media (max-width:640px){ .row{grid-template-columns:1fr; gap:6px} }
+
+/* projects: problem / approach / result */
+.proj{padding:44px 0; border-top:1px solid var(--rule)}
+.proj:first-of-type{border-top:none; padding-top:0}
+.proj header{display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 20px; align-items:baseline; margin-bottom:22px}
+.proj h3{font-size:23px; line-height:1.4}
+.proj .where{font-family:var(--serif); color:var(--mark); font-size:15px}
+.pal{display:grid; grid-template-columns:repeat(3,1fr); gap:32px}
+.pal div{border-top:2px solid var(--ink); padding-top:12px}
+.pal div:last-child{border-top-color:var(--mark)}
+.pal h4{font-size:14px; color:var(--muted); font-weight:600; margin-bottom:8px}
+.pal p{font-size:16px; line-height:1.75; color:var(--ink-soft)}
+.proj blockquote{margin-top:26px; padding-left:20px; border-left:3px solid var(--mark); font-weight:600; font-size:18px; max-width:40em}
+@media (max-width:760px){ .pal{grid-template-columns:1fr; gap:20px} }
+
+/* principles band */
+.band{background:var(--band); color:var(--band-text); border-top:none}
+.band h2{color:var(--band-text)}
+.band .lead{color:#A9B3BA}
+.band a{color:var(--band-text)}
+.rules{display:grid; grid-template-columns:repeat(2,1fr); gap:40px 56px}
+.rules div h3{font-size:20px; line-height:1.5; margin-bottom:8px}
+.rules div p{font-size:16px; color:#BFC6CB; line-height:1.8}
+.rules .from{display:block; margin-top:10px; font-size:14px; color:#C9A56A}
+@media (max-width:760px){ .rules{grid-template-columns:1fr} }
+
+/* stack */
+dl.stack{display:grid; grid-template-columns:170px 1fr; gap:14px 26px; max-width:860px}
+dl.stack dt{font-weight:650}
+dl.stack dd{color:var(--ink-soft)}
+@media (max-width:640px){ dl.stack{grid-template-columns:1fr; gap:2px} dl.stack dd{margin-bottom:12px} }
+
+footer{padding:56px 0 72px; border-top:1px solid var(--rule); color:var(--muted); font-size:15px}
+footer .links{margin-top:14px}
+</style>
+</head>
+<body>
+
+<nav aria-label="頁面導覽">
+  <div class="wrap">
+    <a class="me" href="#top">Brock</a>
+    <ul>
+      <li><a href="#work">經歷</a></li>
+      <li><a href="#projects">專案</a></li>
+      <li class="hide-s"><a href="#principles">做事方式</a></li>
+      <li><a href="/leetcode/">解題筆記</a></li>
+      <li><a href="#contact">聯絡</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+
+  <header class="hero">
+    <div class="wrap">
+      <h1>Brock</h1>
+      <p class="thesis">讓還在運轉的系統，可以安全地改變。</p>
+      <p class="intro">
+        資深後端工程師，十年以上 Java 後端與系統架構經驗。
+        從 AS400 主機整合、企業 B2B 客製整合，走到大型電商的平台工程與系統現代化。現居台中。
+      </p>
+      <div class="links">
+        <a href="mailto:brockqq@protonmail.com">Email</a>
+        <a href="https://github.com/brockqq">GitHub</a>
+        <a href="https://www.linkedin.com/in/brocklin1987/">LinkedIn</a>
+      </div>
+
+      <div class="line" aria-label="職涯軌跡">
+        <ol>
+          <li><div class="yr">2012</div><div class="co">春源鋼鐵</div><div class="did">主機與開放系統介接</div></li>
+          <li><div class="yr">2015</div><div class="co">關貿網路</div><div class="did">企業客戶 B2B 整合</div></li>
+          <li><div class="yr">2021</div><div class="co">台灣新蛋</div><div class="did">電商內部系統與監控</div></li>
+          <li><div class="yr">2023</div><div class="co">富邦媒體 momo</div><div class="did">平台工程與系統現代化</div></li>
+        </ol>
+      </div>
+    </div>
+  </header>
+
+  <section id="work">
+    <div class="wrap">
+      <h2>經歷</h2>
+      <p class="lead">每一段都在處理同一件事：讓不同的系統、不同的單位，可靠地一起運作。</p>
+
+      <div class="row">
+        <div class="when">2023 – 至今<small>台北</small></div>
+        <div>
+          <h3>富邦媒體科技（momo）</h3>
+          <div class="role">高級工程師 / 專案負責人</div>
+          <ul>
+            <li>主導核心商品系統由 JSP / Servlet 單體架構，零停機遷移為服務化、前後端分離架構；重劃模組邊界、清理技術債，新需求開發與維護時程縮短約 80%</li>
+            <li>導入 APISIX 取代單一 VIP 映射，建立灰度與金絲雀發布，核心系統版本迭代零停機</li>
+            <li>主導中台核心功能：以 Event Sourcing 解決高頻同步的鎖競爭，以 Bloom Filter 與多層快取解決快取穿透</li>
+            <li>建置全鏈路追蹤、日誌管線與歷史日誌歸檔，並整合 Jenkins、SonarQube 等品質閘門</li>
+            <li>資安前瞻 PoC：SRP 與 Passkey 無密碼驗證、後量子密碼學</li>
+            <li>負責架構制定、需求釐清、Code Review 與資淺工程師的技術培養</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">2021 – 2023</div>
+        <div>
+          <h3>台灣新蛋（Newegg）</h3>
+          <div class="role">資深工程師</div>
+          <ul>
+            <li>內部系統核心功能開發與維運，戰情室後端開發</li>
+            <li>以 Selenium 建立端到端自動檢核，比對前台操作與後端資料，取代人工巡視</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">2015 – 2021</div>
+        <div>
+          <h3>關貿網路（Tradevan）</h3>
+          <div class="role">資深工程師 / 專案負責人</div>
+          <ul>
+            <li>直接面對大型企業客戶，進行需求訪談、規格確認與客製化整合</li>
+            <li>主動提議並設計 EC 商品共用平台，將多通路整合收斂為統一 API</li>
+            <li>擔任專案負責人協調跨部門資源，參與 CMMI 稽核</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">2012 – 2015</div>
+        <div>
+          <h3>春源鋼鐵</h3>
+          <div class="role">系統工程師</div>
+          <ul>
+            <li>以 IBM MQ 建立 AS400 與 Java 端的訊息介接</li>
+            <li>AS400（CLP / RPG）傳統系統開發與維運</li>
+            <li>參與 Java 專案功能實作與維運</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>代表專案</h2>
+      <p class="lead">每個專案都照同一個順序寫：當時的問題、我怎麼做、最後改變了什麼。</p>
+
+      <article class="proj">
+        <header><h3>核心商品系統的服務化與零停機遷移</h3><span class="where">momo　2025 – 2026</span></header>
+        <div class="pal">
+          <div><h4>問題</h4><p>跑了十多年的 JSP / Servlet 單體系統，前後端綁定，前端人力無法參與改版；單一 VIP 映射無法做流量控管；而且是不能停機的核心系統。</p></div>
+          <div><h4>做法</h4><p>先在既有流程加上追蹤，用真實流量找出最常用與最值得改的區塊；以 DDD 劃分模組邊界；導入 APISIX 與 Apollo Config；在舊入口加上開關，新舊流程可隨時切換。</p></div>
+          <div><h4>結果</h4><p>零停機完成第一階段遷移，解除長年技術債，新需求開發與維護時程縮短約 80%。前端人力於 2026 年進場，接手完成前後端分離，驗證了當初提案的判斷。</p></div>
+        </div>
+        <blockquote>先有觀測能力，才知道要動什麼；先有回退能力，才敢動。</blockquote>
+      </article>
+
+      <article class="proj">
+        <header><h3>可觀測性與 DevOps 工具鏈</h3><span class="where">momo</span></header>
+        <div class="pal">
+          <div><h4>問題</h4><p>服務拆分後，問題橫跨多個服務難以定位；日誌只保留一個月，但電商的問題常在數個月後才浮現；回歸驗證仰賴人工。</p></div>
+          <div><h4>做法</h4><p>SkyWalking 與 Elasticsearch 全鏈路追蹤；以 Vector 取代 Filebeat；Parquet 結合 DuckDB 做歷史日誌歸檔；Jenkins、SonarQube、JUnit、Selenium 串成發布前的品質閘門。</p></div>
+          <div><h4>結果</h4><p>跨服務問題可依鏈路定位；單一服務每日約 1GB 的日誌壓縮到約 100MB（省下近九成），得以長期保存並用 SQL 查詢；自動檢核取代每日人工巡視。</p></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <header><h3>中台高頻資料同步與快取防護</h3><span class="where">momo</span></header>
+        <div class="pal">
+          <div><h4>問題</h4><p>高頻的狀態同步，每次都更新同一筆資料，造成資料庫的鎖競爭；查詢不存在的品號會穿過快取直接打到資料庫，無效請求一多，底層負載就跟著上升。</p></div>
+          <div><h4>做法</h4><p>以 Event Sourcing 改為只新增（append-only）的寫入，再聚合出目前狀態；把全量品號預載進 Bloom Filter 當第一道防線，後面接本機快取、Redis 分散式快取與資料庫的多層驗證。</p></div>
+          <div><h4>結果</h4><p>寫入不再互相搶鎖；無效請求在最前面就被擋下，快取穿透的問題消失，資料庫負載大幅下降。</p></div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <header><h3>EC 商品共用平台</h3><span class="where">關貿網路</span></header>
+        <div class="pal">
+          <div><h4>問題</h4><p>企業客戶要把商品資料推送到多個外部通路，每個通路的規格都不同，每接一個就是一次客製開發。</p></div>
+          <div><h4>做法</h4><p>完成第一個客戶的串接後，主動向業務提議抽成共用平台：對外提供統一 API，把各通路的差異收在平台內部。</p></div>
+          <div><h4>結果</h4><p>新客戶與新通路只要呼叫同一組 API。整合成本從隨通路數成長，變成一次性的平台投資。</p></div>
+        </div>
+        <blockquote>B2B 整合最大的成本不在第一次串接，而在後續每一家的差異都要長期維護。</blockquote>
+      </article>
+
+      <article class="proj">
+        <header><h3>與業務共同維護的可執行規格</h3><span class="where">momo</span></header>
+        <div class="pal">
+          <div><h4>問題</h4><p>各商品類型的營業額計算規則只存在業務單位的認知裡，每次確認得到的答案不一定一致；寫成文件也會漸漸與程式分岔。</p></div>
+          <div><h4>做法</h4><p>先用 Excel 逐條列出情境與業務對齊，再導入 Cucumber / Gherkin 變成可執行的測試，並寫了 Excel 與 Gherkin 的互轉工具放在 Git 上，業務不必改變工作方式。</p></div>
+          <div><h4>結果</h4><p>業務主動維護規則；QA 當測試案例、PM 用來理解系統、新人拿來當文件。爭議從「當初怎麼講的」變成「規則寫在這裡」。</p></div>
+        </div>
+        <blockquote>與其要求對方改變工作方式，不如把工具接到他們原本的方式上。</blockquote>
+      </article>
+
+      <article class="proj">
+        <header><h3>Kata 社區：多社區住戶服務平台</h3><span class="where">個人專案　2026</span></header>
+        <div class="pal">
+          <div><h4>問題</h4><p>一個平台服務多個社區，每個社區各有成員、公告、行事曆與零用金。權限分平台與社區兩層；重複活動要跨時區、跨日光節約時間都算對；零用金是真的錢，多人同時操作時帳必須對得上，而且要查得到誰改了什麼。</p></div>
+          <div><h4>做法</h4><p>Spring Boot 4 + Vue 3。權限檢查集中在單一入口；重複活動依時區展開，查詢時直接跳到需要的區段；零用金以鎖讓撥補與修改依序執行，並留下只增不改的異動紀錄；活動以版本號防止互相覆蓋。以 Claude Code 協作開發，完成後依 Google L6 標準做全專案 review，分批修正。</p></div>
+          <div><h4>結果</h4><p>後端 67 個測試，包含可重現的並發測試，以及「跳段展開」與「完整展開」的等價測試，並逐一刻意破壞程式，確認測試真的抓得到錯誤。正式環境缺少密鑰時拒絕啟動，登入有多維度的頻率限制。</p></div>
+        </div>
+        <blockquote>涉及錢的地方，要隨時答得出「誰、在什麼時候、把什麼改成什麼」。</blockquote>
+      </article>
+    </div>
+  </section>
+
+  <section id="principles" class="band">
+    <div class="wrap">
+      <h2>做事方式</h2>
+      <p class="lead">這幾條不是先想好的原則，是從實際踩過的事情裡整理出來的。</p>
+      <div class="rules">
+        <div>
+          <h3>先讓系統自己說話</h3>
+          <p>長年的系統，文件和現況一定有落差。我動手之前會先加上追蹤，用真實流量和資料確認它實際在做什麼。</p>
+          <span class="from">來自：商品系統遷移</span>
+        </div>
+        <div>
+          <h3>跨系統的呼叫，一定要對帳</h3>
+          <p>我只看得到對方回給我的結果，看不到對方實際做了什麼。對帳是唯一不依賴對方說法的檢查方式，頻率則要看交易的價值，而不是流量。</p>
+          <span class="from">來自：付款串接的實際經驗</span>
+        </div>
+        <div>
+          <h3>靠人記得的事，終究會被忘記</h3>
+          <p>規格、檢查、通知，只要依賴某個人記得去做，遲早會失效。能變成自動檢查的，就不要留給人。</p>
+          <span class="from">來自：可執行規格、品質閘門</span>
+        </div>
+        <div>
+          <h3>每一步都要能退回去</h3>
+          <p>改一個還在運轉的系統，重點不在一次改對，而在任何時候都能切回原狀。能回退，才有人敢批准改變。</p>
+          <span class="from">來自：開關切換與灰度發布</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="wrap">
+      <h2>技術</h2>
+      <p class="lead">依實際使用深度排列。</p>
+      <dl class="stack">
+        <dt>後端與架構</dt><dd>Java、Spring Boot、Spring Modulith、Domain-Driven Design、Event Sourcing、Event-Driven Architecture、Spring Security / JWT、JPA、gRPC、Docker</dd>
+        <dt>網關與配置</dt><dd>APISIX、Apollo Config、灰度發布、金絲雀與藍綠部署</dd>
+        <dt>可觀測性</dt><dd>SkyWalking、Elasticsearch、Vector、Parquet、DuckDB</dd>
+        <dt>CI/CD 與品質</dt><dd>Jenkins、SonarQube、JUnit、Git、Maven、Cucumber、Selenium、JMeter、K6</dd>
+        <dt>資料庫</dt><dd>Oracle、DB2、MySQL、SQL Server、Redis</dd>
+        <dt>前端</dt><dd>Vue 3、Vite、Pinia、Vitest</dd>
+        <dt>系統整合</dt><dd>IBM MQ、AS400（CLP / RPG）、JSP / Servlet、Struts</dd>
+        <dt>資安</dt><dd>SRP、Passkey（WebAuthn / FIDO）、後量子密碼學（ML-KEM、ML-DSA）</dd>
+        <dt>開發方式</dt><dd>AI 協作開發（Claude Code）</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="edu">
+    <div class="wrap">
+      <h2>學歷</h2>
+      <div class="row" style="margin-top:28px">
+        <div class="when">2010 – 2012</div>
+        <div><h3>國立中興大學</h3><div class="role">資訊管理學系 碩士</div></div>
+      </div>
+      <div class="row">
+        <div class="when">2005 – 2010</div>
+        <div><h3>元智大學</h3><div class="role">資訊管理學系 學士</div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <p>歡迎來信聊系統現代化、平台工程或跨系統整合。</p>
+    <div class="links">
+      <a href="mailto:brockqq@protonmail.com">brockqq@protonmail.com</a>
+      <a href="https://github.com/brockqq">GitHub</a>
+      <a href="https://www.linkedin.com/in/brocklin1987/">LinkedIn</a>
+    </div>
+    <p style="margin-top:28px; font-size:13px">© 2026 Brock</p>
+  </div>
+</footer>
+
+</body>
+</html>

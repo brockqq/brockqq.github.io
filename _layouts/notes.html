@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if page.number %}{{ page.number }}. {% endif %}{{ page.title }}｜Brock</title>
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta name="author" content="Brock">
+{% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+<meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="Brock">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+<link rel="stylesheet" href="{{ '/assets/notes.css' | relative_url }}">
+</head>
+<body>
+
+<nav aria-label="頁面導覽">
+  <div class="wrap">
+    <a class="me" href="{{ '/' | relative_url }}">Brock</a>
+    <ul>
+      <li><a href="{{ '/' | relative_url }}">首頁</a></li>
+      <li><a href="{{ '/leetcode/' | relative_url }}">解題筆記</a></li>
+      <li><a href="{{ '/#contact' | relative_url }}">聯絡</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+{{ content }}
+</main>
+
+<footer>
+  <div class="wrap">© {{ site.time | date: '%Y' }} Brock</div>
+</footer>
+
+</body>
+</html>

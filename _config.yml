@@ -1,0 +1,20 @@
+title: Brock
+url: https://brockqq.github.io
+lang: zh-Hant
+timezone: Asia/Taipei
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# leetcode/_posts/2026-09-27-two-sum.md -> /leetcode/2026/09/27/two-sum/
+permalink: /:categories/:year/:month/:day/:title/
+
+defaults:
+  - scope:
+      path: leetcode
+      type: posts
+    values:
+      layout: leetcode

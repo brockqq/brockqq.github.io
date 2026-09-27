@@ -1,0 +1,72 @@
+---
+layout: notes
+title: LeetCode 解題筆記
+description: Brock 每天的 LeetCode 解題心得：思路、解法與踩過的坑。
+---
+{% assign posts = site.categories.leetcode | default: empty %}
+{% assign easy = posts | where: "difficulty", "Easy" %}
+{% assign medium = posts | where: "difficulty", "Medium" %}
+{% assign hard = posts | where: "difficulty", "Hard" %}
+
+<header class="wrap list-head">
+  <h1>LeetCode 解題筆記</h1>
+  <p class="lead">每天一題。記下當時怎麼想、最後怎麼解，還有哪裡卡住。</p>
+
+  <dl class="stats">
+    <div><dt>總數</dt><dd>{{ posts.size }}</dd></div>
+    <div><dt>Easy</dt><dd class="easy">{{ easy.size }}</dd></div>
+    <div><dt>Medium</dt><dd class="medium">{{ medium.size }}</dd></div>
+    <div><dt>Hard</dt><dd class="hard">{{ hard.size }}</dd></div>
+  </dl>
+
+  <div class="heat" id="heat" aria-label="最近 20 週的解題紀錄"
+       data-days="{% for p in posts %}{{ p.date | date: '%Y-%m-%d' }}{% unless forloop.last %},{% endunless %}{% endfor %}"></div>
+</header>
+
+<section class="wrap list">
+  {% if posts.size == 0 %}
+    <p class="empty">還沒有筆記。第一篇很快就來。</p>
+  {% else %}
+    {% assign months = posts | group_by_exp: "p", "p.date | date: '%Y 年 %-m 月'" %}
+    {% for m in months %}
+      <h2>{{ m.name }}</h2>
+      <ol class="entries">
+        {% for p in m.items %}
+        <li>
+          <time datetime="{{ p.date | date: '%Y-%m-%d' }}">{{ p.date | date: '%m.%d' }}</time>
+          <a href="{{ p.url | relative_url }}">{% if p.number %}<span class="num">{{ p.number }}.</span> {% endif %}{{ p.title }}</a>
+          {% if p.difficulty %}<span class="diff {{ p.difficulty | downcase }}">{{ p.difficulty }}</span>{% endif %}
+          {% if p.tags.size > 0 %}<span class="t">{{ p.tags | join: "・" }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ol>
+    {% endfor %}
+  {% endif %}
+</section>
+
+<script>
+(function () {
+  var el = document.getElementById('heat');
+  if (!el) return;
+  var counts = {};
+  (el.dataset.days || '').split(',').filter(Boolean).forEach(function (d) {
+    counts[d] = (counts[d] || 0) + 1;
+  });
+  var pad = function (n) { return n < 10 ? '0' + n : '' + n; };
+  var key = function (d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); };
+  var today = new Date();
+  today.setHours(0, 0, 0, 0);
+  // 從 20 週前的週日開始，一欄一週
+  var start = new Date(today);
+  start.setDate(start.getDate() - start.getDay() - 7 * 19);
+  var frag = document.createDocumentFragment();
+  for (var d = new Date(start); d <= today; d.setDate(d.getDate() + 1)) {
+    var k = key(d), n = counts[k] || 0;
+    var cell = document.createElement('span');
+    cell.className = 'c' + Math.min(n, 3);
+    cell.title = k + (n ? '：' + n + ' 題' : '');
+    frag.appendChild(cell);
+  }
+  el.appendChild(frag);
+})();
+</script>

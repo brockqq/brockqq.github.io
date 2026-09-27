@@ -1,0 +1,32 @@
+---
+layout: notes
+---
+<article class="wrap note">
+  <header class="note-head">
+    <a class="back" href="{{ '/leetcode/' | relative_url }}">← 解題筆記</a>
+    <div class="meta">
+      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y.%m.%d' }}</time>
+      {% if page.difficulty %}<span class="diff {{ page.difficulty | downcase }}">{{ page.difficulty }}</span>{% endif %}
+    </div>
+    <h1>{% if page.number %}<span class="num">{{ page.number }}.</span> {% endif %}{{ page.title }}</h1>
+    {% if page.tags.size > 0 %}
+    <ul class="tags">{% for t in page.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+    {% endif %}
+    {% if page.time or page.space or page.link %}
+    <dl class="facts">
+      {% if page.time %}<dt>時間</dt><dd><code>{{ page.time }}</code></dd>{% endif %}
+      {% if page.space %}<dt>空間</dt><dd><code>{{ page.space }}</code></dd>{% endif %}
+      {% if page.link %}<dt>題目</dt><dd><a href="{{ page.link }}" rel="noopener">LeetCode ↗</a></dd>{% endif %}
+    </dl>
+    {% endif %}
+  </header>
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  <nav class="pager" aria-label="上一篇／下一篇">
+    {% if page.previous %}<a class="prev" href="{{ page.previous.url | relative_url }}"><small>較早</small>{% if page.previous.number %}{{ page.previous.number }}. {% endif %}{{ page.previous.title }}</a>{% else %}<span></span>{% endif %}
+    {% if page.next %}<a class="next" href="{{ page.next.url | relative_url }}"><small>較新</small>{% if page.next.number %}{{ page.next.number }}. {% endif %}{{ page.next.title }}</a>{% endif %}
+  </nav>
+</article>
